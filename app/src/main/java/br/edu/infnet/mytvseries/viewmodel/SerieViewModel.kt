@@ -28,12 +28,6 @@ class SerieViewModel (application: Application) : AndroidViewModel(application) 
         }.start()
     }
 
-    fun deleteSerie(serie: Serie){
-        Thread{
-            serieDao.deleteSerie(serie)
-        }
-    }
-
     fun deleteAll(){
         Thread{
             serieDao.deleteAll()

@@ -11,9 +11,9 @@ data class Serie(
         val nameSerie: String,
         val channel: String? = null,
         val season: Int,
-        val titleEp: String,
+        val titleEp: String? = null,
         val numberEp: Int,
-        val review: Int? = null
+        val review: Int
 
 
 ) {

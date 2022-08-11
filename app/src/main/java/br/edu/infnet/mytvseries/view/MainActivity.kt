@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         btSend.setOnClickListener {
 
             val date = date()
-            if (validated(etNameSerie, etSeason, etTittleEp, etNumberEp)) {
+            if (validated(etNameSerie, etSeason, etTittleEp, etNumberEp,etReview)) {
 
                 val serie = Serie(
                     null,
@@ -54,12 +54,12 @@ class MainActivity : AppCompatActivity() {
                 )
                 serieViewModel.insert(serie)
 
-                etNameSerie.setText("")
-                etChannel.setText("")
-                etSeason.setText("")
-                etTittleEp.setText("")
-                etNumberEp.setText("")
-                etReview.setText("")
+                etNameSerie.text = null
+                etChannel.text = null
+                etSeason.text = null
+                etTittleEp.text = null
+                etNumberEp.text = null
+                etReview.text = null
 
                 Toast.makeText(
                     this,
@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(
                     this,
-                    "Obrigatório os campos de Nome, Temporada, Título e nº do Episódio",
+                    "Confira se os campos foram digitados corretamente",
                     Toast.LENGTH_LONG
                 ).show()
             }
@@ -88,14 +88,18 @@ class MainActivity : AppCompatActivity() {
         nameSerie: EditText,
         season: EditText,
         title: EditText,
-        numberEp: EditText
+        numberEp: EditText,
+        review : EditText
     ): Boolean {
 
         return nameSerie.text.isNotBlank()
                 && season.text.isNotBlank() &&
                 title.text.isNotBlank() &&
-                numberEp.text.isNotBlank()
+                numberEp.text.isNotBlank() &&
+                review.text.isNotBlank()
+
     }
+
 
      fun date(): String {
         val date = Calendar.getInstance().time
