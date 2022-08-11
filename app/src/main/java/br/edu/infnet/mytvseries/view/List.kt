@@ -1,5 +1,6 @@
 package br.edu.infnet.mytvseries.view
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
@@ -44,32 +45,27 @@ class List : AppCompatActivity() {
 
         }
 
-        ///////------------------------------
 
         val btSave = this.findViewById<Button>(R.id.btSave)
 
         btSave.setOnClickListener {
-            if(isExternalStorageWritable()){
-                val file = File(this.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), "lista_series-${date()}")
-                val fos = FileOutputStream(file)
-                fos.write(list.toString().toByteArray())
-                fos.close()
-                Toast.makeText(this,"Salvo com sucesso",Toast.LENGTH_LONG).show()
-            } else{
-                Toast.makeText(this,"Mídia externa não disponível",Toast.LENGTH_LONG).show()
+
+
+            val filename = "lista_series-${date()}.txt"
+            val fileContents =  list.toString()
+                 openFileOutput(filename, Context.MODE_PRIVATE).use {
+                it.write(fileContents.toByteArray())
             }
-        }
+                Toast.makeText(this,"Salvo com sucesso",Toast.LENGTH_LONG).show()
+              }
        
    }
 
-    fun isExternalStorageWritable(): Boolean {
-        return Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED
-    }
 
     fun date(): String {
         val date = Calendar.getInstance().time
 
-        val dateTimeFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+        val dateTimeFormat = SimpleDateFormat("dd-MM-yyyy-hh-mm", Locale.getDefault())
 
         return dateTimeFormat.format(date)
     }

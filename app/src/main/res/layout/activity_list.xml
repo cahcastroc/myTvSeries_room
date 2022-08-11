@@ -33,7 +33,7 @@
                 android:id="@+id/btSave"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Salvar Externamente" />
+                android:text="Salvar em Arquivo" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
