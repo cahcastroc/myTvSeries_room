@@ -4,32 +4,50 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import br.edu.infnet.mytvseries.database.AppDatabase
-import br.edu.infnet.mytvseries.model.Episode
 import br.edu.infnet.mytvseries.model.Serie
-import br.edu.infnet.mytvseries.model.SerieAndEpisode
+
 import br.edu.infnet.mytvseries.model.SerieDao
 
 class SerieViewModel (application: Application) : AndroidViewModel(application)  {
 
-    val serieAndEpisode: LiveData<List<SerieAndEpisode>>
+//    val serieAndEpisode: LiveData<List<SerieAndEpisode>>
+
+    val serie: LiveData<List<Serie>>
 
     private val serieDao: SerieDao
 
     init {
         val database = AppDatabase.getDatabase(application)
         serieDao = database.serieDao()
-        serieAndEpisode = serieDao.listAllSerieAndEpisode()
+        serie = serieDao.listAll()
     }
 
-    fun insertAll (serie: Serie, episode: Episode){
+    fun insert (serie: Serie){
         Thread{
-            serieDao.insertAll(serie,episode)
+            serieDao.insert(serie)
         }.start()
+    }
+
+    fun deleteSerie(serie: Serie){
+        Thread{
+            serieDao.deleteSerie(serie)
+        }
     }
 
     fun deleteAll(){
         Thread{
             serieDao.deleteAll()
+        }.start()
+
+    }
+
+    fun listAll(){
+        Thread{
+            serieDao.listAll()
         }
     }
+
+
+
+
 }

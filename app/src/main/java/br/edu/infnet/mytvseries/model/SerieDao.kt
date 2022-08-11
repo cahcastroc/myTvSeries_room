@@ -5,21 +5,25 @@ import androidx.room.*
 
 @Dao
 interface SerieDao {
-    @Transaction
+
+//    @Transaction
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(serie: Serie, episode: Episode)
+    fun insert(serie: Serie)
 
-    @Transaction
+//    @Transaction
     @Query("SELECT * FROM Serie")
-    fun listAllSerieAndEpisode() : LiveData<List<SerieAndEpisode>>
+    fun listAll() : LiveData<List<Serie>>
 
+//    @Update
+//    fun updateSerie(serie: LiveData<List<Serie>>)
 
-    @Query("SELECT * FROM Serie")
-    fun listAllSeries() : LiveData<List<Serie>>
-
+    @Delete
+    fun deleteSerie(serie: Serie)
 
     @Query("DELETE FROM Serie")
     fun deleteAll()
+
+
 
 }
 

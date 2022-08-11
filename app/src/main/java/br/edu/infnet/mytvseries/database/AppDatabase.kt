@@ -6,9 +6,10 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import br.edu.infnet.mytvseries.model.Episode
 import br.edu.infnet.mytvseries.model.Serie
+
 import br.edu.infnet.mytvseries.model.SerieDao
 
-@Database(entities = arrayOf(Serie::class,Episode::class), version = 1, exportSchema = false)
+@Database(entities = arrayOf(Serie::class), version = 3, exportSchema = true)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun serieDao() :SerieDao

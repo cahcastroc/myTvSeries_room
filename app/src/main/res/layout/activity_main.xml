@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp"
-    tools:context=".MainActivity">
+    tools:context=".view.MainActivity">
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
@@ -66,19 +66,6 @@
                 android:inputType="number" />
 
             <TextView
-                android:id="@+id/tvDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Data:" />
-
-            <EditText
-                android:id="@+id/etDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="date" />
-
-            <TextView
                 android:id="@+id/tvTitleEp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -121,13 +108,13 @@
                 android:id="@+id/btSend"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:text="Salvar" />
 
-            <TextView
-                android:id="@+id/tv2"
+            <Button
+                android:id="@+id/btList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="Visualizar" />
 
         </LinearLayout>
     </ScrollView>

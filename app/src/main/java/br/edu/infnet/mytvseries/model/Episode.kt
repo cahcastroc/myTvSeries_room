@@ -9,7 +9,6 @@ data class Episode (
         val season: Int,
         val titleEp: String,
         val numberEp: Int,
-        val date: String? = null,
         val review: Int? = null
 
         )
