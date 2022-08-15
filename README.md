@@ -5,7 +5,7 @@
 </h4>
 
 
-## O aplicativo é capaz de registrar séries e seus episódio para classficação do usuário. Recursos utilizados:
+<h3> O aplicativo é capaz de registrar séries e seus episódio para classificação do usuário. Recursos utilizados: </h3>
 
 - `Android Room` 
 - `Livedata`
